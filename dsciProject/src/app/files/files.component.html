@@ -1,0 +1,18 @@
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+  <div class="container w-25 ml-0">
+  <h5>Databases</h5>
+    <select class="form-select" aria-label="Default select example" formControlName="database" required>
+      <option value="mongo" selected>MongoDB</option>
+      <option value="firebase">FireBase</option>
+      <option value="mysql">mySQL</option>
+    </select>
+  </div>
+  <button class="btn btn-primary" id="submit">Submit</button>
+</form>
+
+<div id="result">
+  <ul *ngFor="let child of returnData">
+    <li (click)="itemclick(child)">{{child}}</li>
+  </ul>
+</div>
+

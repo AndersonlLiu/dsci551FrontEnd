@@ -1,0 +1,27 @@
+#search {
+  margin-top: 20px;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: aliceblue;
+}
+h3 {
+  text-align: center;
+}
+#submit {
+  margin-top: 10px;
+  margin-left: 380px;
+  margin-bottom: 20px;
+}
+.star {
+  color: red;
+}
+#result{
+  width:60%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  margin-top: 30px;
+  padding-top: 20px;
+  background-color: aliceblue;
+}

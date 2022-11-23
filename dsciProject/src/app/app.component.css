@@ -1,0 +1,21 @@
+header{
+  position: relative;
+  padding: 0;
+}
+
+a:focus {
+  cursor: pointer;
+  border: solid 1px black;
+  border-radius: 15px;
+}
+ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin:0;
+}
+
+ul a{
+  padding: 1rem;
+  display: inline-block;
+}

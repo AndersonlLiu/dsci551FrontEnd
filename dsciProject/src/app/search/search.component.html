@@ -1,0 +1,108 @@
+<div class="container p-3" id="search">
+  <h3>Data Search</h3>
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" ngNativeValidate>
+  <div class="row mt-3">
+    <div class="col">
+      <h5>Type<span class="star">*</span></h5>
+      <select class="form-select" aria-label="Default select example" formControlName="type" #types (change)="onSelected(types.value)" required>
+        <option value="crime.csv" selected>Crime</option>
+        <option value="collision.csv">Vehicle Collision</option>
+        <option value="arrest.csv">Arrest Type</option>
+        <option value="marijuana.csv">Marijuana Crime</option>
+        <option value="LAPD_call.csv">Reason of calling Police</option>
+      </select>
+    </div>
+    <div class="col">
+      <h5>Crime Type</h5>
+      <select class="form-select" aria-label="Default select example" formControlName="crimetype">
+        <option value="Violent Crime" selected>Violent Crime</option>
+        <option value="Property Crime">Property Crime</option>
+        <option value="Misdemeanor">Misdemeanor</option>
+        <option value="Felony">Felony</option>
+        <option value="Sex Crime">Sex Crime</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <h5>Start Date</h5>
+        <input type="date" id="start" name="trip-start" formControlName="startdate">
+    </div>
+    <div class="col">
+      <h5>End Date</h5>
+        <input type="date" id="end" name="trip-start" formControlName="enddate">
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <h5>Victom Sex</h5>
+      <select class="form-select" aria-label="Default select example" formControlName="victomsex">
+        <option value="M" selected>Male</option>
+        <option value="F">Female</option>
+      </select>
+    </div>
+
+    <div class="col">
+      <h5>Category of Arrest</h5>
+      <select class="form-select" aria-label="Default select example" formControlName="categoryoforrest">
+        <option value="D" selected>D-Dependent</option>
+        <option value="F">F-Felony</option>
+        <option value="I">I-Infraction</option>
+        <option value="M">M-Misdemeanor</option>
+        <option value="O">O-Other</option>
+      </select>
+    </div>
+
+  </div>
+  <div class="row mt-3">
+    <div class="col">
+      <h5>Location</h5>
+      <select class="form-select" aria-label="Default select example" formControlName="location">
+        <option value="Outside" selected>Outside</option>
+        <option value="Central">Central</option>
+        <option value="77th Street">77th Street</option>
+        <option value="Pacific">Pacific</option>
+        <option value="Southwest">Southwest</option>
+        <option value="Hollywood">Hollywood</option>
+        <option value="Southeast">Southeast</option>
+        <option value="North Hollywood">North Hollywood</option>
+        <option value="Newton">Newton</option>
+        <option value="Wilshire">Wilshire</option>
+        <option value="West LA">West LA</option>
+        <option value="Northeast">Northeast</option>
+        <option value="Harbor">Harbor</option>
+        <option value="Van Nuys">Van Nuys</option>
+        <option value="West Valley">West Valley</option>
+        <option value="Topanga">Topanga</option>
+        <option value="Mission">Mission</option>
+        <option value="Devonshire">Devonshire</option>
+        <option value="Hollenbeck">Hollenbeck</option>
+        <option value="Foothill">Foothill</option>
+      </select>
+    </div>
+    <div class="col">
+      <h5>Databases<span class="star">*</span></h5>
+      <select class="form-select" aria-label="Default select example" formControlName="database" required>
+        <option value="mongo" selected>MongoDB</option>
+        <option value="firebase">FireBase</option>
+        <option value="mysql">mySQL</option>
+      </select>
+    </div>
+</div>
+
+  <div class="row mt-3">
+    <div class="form-check col">
+      <input class="form-check-input" type="checkbox" (change)='CountonSelect($event)' [checked]="countChecked" id="count">
+      <label class="form-check-label" for="flexCheckDefault">
+        count
+      </label>
+    </div>
+  </div>
+  <hr class="mt-5">
+  <button class="btn btn-primary" id="submit">Submit</button>
+  </form>
+</div>
+<div id="result">
+  {{this.returnData}}
+</div>
+
