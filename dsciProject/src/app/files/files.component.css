@@ -1,6 +1,6 @@
 #submit {
   margin-top: 10px;
-  margin-left: 680px;
+  margin-left: 600px;
 }
 #result{
   width:80%;
@@ -10,4 +10,9 @@
   margin-top: 30px;
   padding-top: 20px;
   background-color: aliceblue;
+}
+
+#clear {
+  margin-top: 10px;
+  margin-left: 5px;
 }
