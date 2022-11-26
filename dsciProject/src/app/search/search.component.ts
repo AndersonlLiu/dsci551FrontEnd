@@ -115,7 +115,7 @@ export class SearchComponent implements OnInit {
     }
     console.log(req);
     const body=req;
-    this.http.post<any>('https://dsci551-367122.uw.r.appspot.com/api/v1/query',body).subscribe(data => {
+    this.http.post<any>('http://127.0.0.1:5000/api/v1/query',body).subscribe(data => {
       console.log(data);
       if (typeof(data) === 'object') {
         this.returnData = JSON.stringify(data, null, 4);
