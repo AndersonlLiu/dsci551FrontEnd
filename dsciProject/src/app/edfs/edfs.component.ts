@@ -40,13 +40,13 @@ export class EdfsComponent implements OnInit {
       filename: [''],
       readpartitionnumber: [''],
       database: [''],
-      putfilename: ['']
+      putfilename: [''],
+      partitioncount: ['']
   });
 
   }
 
   onSubmit() {
-    var count = 0;
     const putfilename = this.searchForm.value.putfilename;
     const new_putfilename= putfilename.replaceAll("/", "%2F");
     const command = this.searchForm.value.command;
@@ -57,6 +57,7 @@ export class EdfsComponent implements OnInit {
     console.log(filename);
     const readpartitionnumber = this.searchForm.value.readpartitionnumber;
     const database = this.searchForm.value.database;
+    const partitioncount = this.searchForm.value.partitioncount;
     if (["mkdir", "ls"].includes(command)) {
       this.url = "?directory_path=" + new_path;
     } else {
@@ -67,7 +68,6 @@ export class EdfsComponent implements OnInit {
     }
     if (typeof readpartitionnumber != 'undefined') {
       this.partition_num = "&partition_num=" + readpartitionnumber;
-      count = readpartitionnumber;
   }
 
     if (["mkdir", "rm"].includes(command)) {
@@ -83,7 +83,7 @@ export class EdfsComponent implements OnInit {
     }
     else if (command === 'put') {
       const body=JSON.stringify(this.request_body);
-      this.http.post<any>('http://127.0.0.1:5000/api/v1/put?db=' + database + '&file_src=' + new_putfilename + '&directory_path=' + new_path + '&partition_count=' + count, body).subscribe(
+      this.http.post<any>('http://127.0.0.1:5000/api/v1/put?db=' + database + '&file_src=' + new_putfilename + '&directory_path=' + new_path + '&partition_count=' + partitioncount, body).subscribe(
         (response) => {
         this.returnData = 'success';
       },
