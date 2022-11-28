@@ -39,12 +39,16 @@ export class EdfsComponent implements OnInit {
       path: [''],
       filename: [''],
       readpartitionnumber: [''],
-      database: ['']
+      database: [''],
+      putfilename: ['']
   });
 
   }
 
   onSubmit() {
+    var count = 0;
+    const putfilename = this.searchForm.value.putfilename;
+    const new_putfilename= putfilename.replaceAll("/", "%2F");
     const command = this.searchForm.value.command;
     console.log(command);
     const path = this.searchForm.value.path;
@@ -63,6 +67,7 @@ export class EdfsComponent implements OnInit {
     }
     if (typeof readpartitionnumber != 'undefined') {
       this.partition_num = "&partition_num=" + readpartitionnumber;
+      count = readpartitionnumber;
   }
 
     if (["mkdir", "rm"].includes(command)) {
@@ -75,7 +80,18 @@ export class EdfsComponent implements OnInit {
         this.returnData = data;
       }
       })
-    } else {
+    }
+    else if (command === 'put') {
+      const body=JSON.stringify(this.request_body);
+      this.http.post<any>('http://127.0.0.1:5000/api/v1/put?db=' + database + '&file_src=' + new_putfilename + '&directory_path=' + new_path + '&partition_count=' + count, body).subscribe(
+        (response) => {
+        this.returnData = 'success';
+      },
+      (error) => {
+        this.returnData = 'fail';
+      })
+    }
+    else {
       this.http.get<any>('https://dsci551-367122.uw.r.appspot.com/api/v1/' + command + this.url + filename + "&db=" + database + this.partition_num).subscribe(data => {
         console.log(data);
         if (typeof(data) === 'object') {

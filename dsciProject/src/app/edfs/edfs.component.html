@@ -11,6 +11,7 @@
           <option value="rm">rm</option>
           <option value="getPartitionLocations">getPartitionLocations</option>
           <option value="readPartition">readPartition</option>
+          <option value="put">put</option>
         </select>
       </div>
       <div class="col">
@@ -34,9 +35,12 @@
         <select class="form-select" aria-label="Default select example" formControlName="database">
           <option value="mongo" selected>MongoDB</option>
           <option value="firebase">FireBase</option>
-          <option value="mysql">mySQL</option>
-          <option value="spark">Spark</option>
+          <option value="mysql">MySQL</option>
         </select>
+      </div>
+      <div class="col">
+        <h5>Put File Name</h5>
+        <input class="form-control" type="text" placeholder="enter the input file name here" formControlName="putfilename">
       </div>
     </div>
     <hr class="mt-5">

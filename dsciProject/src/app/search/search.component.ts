@@ -23,18 +23,23 @@ export class SearchComponent implements OnInit {
     if (this.selectedType === "crime.csv") {
       this.searchForm.controls['crimetype'].enable();
       this.searchForm.controls['categoryoforrest'].disable();
+      this.searchForm.controls['victomsex'].enable();
     } else if (this.selectedType === "collision.csv") {
       this.searchForm.controls['categoryoforrest'].disable();
       this.searchForm.controls['crimetype'].disable();
+      this.searchForm.controls['victomsex'].enable();
     } else if (this.selectedType === "arrest.csv") {
       this.searchForm.controls['crimetype'].disable();
       this.searchForm.controls['categoryoforrest'].enable();
+      this.searchForm.controls['victomsex'].enable();
     } else if (this.selectedType === "marijuana.csv") {
       this.searchForm.controls['categoryoforrest'].disable();
       this.searchForm.controls['crimetype'].disable();
+      this.searchForm.controls['victomsex'].enable();
     } else {
       this.searchForm.controls['categoryoforrest'].disable();
       this.searchForm.controls['crimetype'].disable();
+      this.searchForm.controls['victomsex'].disable();
     }
 	}
 
@@ -101,7 +106,7 @@ export class SearchComponent implements OnInit {
     if (enddate != "//") {
       req.argsLte['Date'] = enddate
     }
-    if (victomsex != "") {
+    if (victomsex != "" && victomsex != undefined) {
       req.argsEq['Gender'] = victomsex
     }
     if (categoryoforrest != "" && categoryoforrest != undefined) {
